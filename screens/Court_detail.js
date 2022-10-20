@@ -4,19 +4,19 @@ import { useEffect } from 'react'
 
 
 const Court_detail = ({ navigation, route }) => {
-    const [court] = route.params
+    const {court} = route.params
 
     useEffect(() => {
         navigation.setOptions(
             {
                 // title : "รายละเอียดสินค้า"
-                title: court,
+                title: court, 
             }, [navigation, court])
     });
 
     return (
         <View>
-            <Text>{data}</Text>
+            <Text>{court}</Text>
         </View>
     )
 }

@@ -2,7 +2,6 @@ import { View, Text, FlatList, TouchableOpacity, SafeAreaView } from 'react-nati
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { NativeScreenNavigationContainer } from 'react-native-screens'
-import { useEffect } from 'react'
 
 
 const DATA_Court = [
