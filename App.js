@@ -15,12 +15,17 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="open" component={OpenScreen} options={{ headerShown: false }} />
         <Stack.Screen name="court" component={Court} options={{
-          title: "Court", headerBackVisible: false, 
-          headerTitleAlign: 'center', 
-          headerStyle: { backgroundColor: "#1F8700" }, 
+          title: "Court",
+          headerBackVisible: false,
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: "#1F8700" },
           headerTintColor: '#fff',
         }} />
-        <Stack.Screen name="detail" component={Court_detail}/>
+        <Stack.Screen name="detail" component={Court_detail} options={{
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: "#1F8700" },
+          headerTintColor: '#fff',
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

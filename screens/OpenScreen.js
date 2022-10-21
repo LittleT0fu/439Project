@@ -1,18 +1,16 @@
 
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView ,Image } from 'react-native';
 
 export default function OpenScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.touchOcapa} onPress={()=> navigation.replace("court")}>
-        <View style={{ alignItems: 'center' }}>
-          <Text style={styles.title}>TNI</Text>
-          <Text style={styles.title}>Badminton</Text>
-          <Text style={styles.title}>Court</Text>
+        <View style={{ alignItems: 'center'}}>
+          <Image style={{width:300 , height:300}} source={require('../image/logo.png')}/>
         </View>
 
-        <View style={{marginTop : 50}}>
-          <Text>
+        <View style={{marginTop : 40}}>
+          <Text style={styles.Touch2Start}>
             Touch to Start
           </Text>
         </View>
@@ -24,10 +22,9 @@ export default function OpenScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1F8700'
+    backgroundColor: '#7BCF85'
   },
   title: {
     fontSize: 48,
@@ -42,6 +39,8 @@ const styles = StyleSheet.create({
     marginHorizontal : 50
   },
   Touch2Start:{
-    fontSize:100,
+    fontSize:24,
+    color:'black',
+    fontWeight:'bold'
   }
 });
