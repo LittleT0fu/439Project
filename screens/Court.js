@@ -1,6 +1,5 @@
 import { View, Text, FlatList, TouchableOpacity, SafeAreaView, StyleSheet ,Dimensions , ScrollView , Image } from 'react-native'
 import React from 'react'
-import image_slide from './image_slide'
 
 
 const { width } = Dimensions.get("window");
