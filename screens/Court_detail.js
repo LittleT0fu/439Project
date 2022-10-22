@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator , Button } from 'react-native'
 import React from 'react'
 import { useEffect, useState } from 'react'
 
@@ -59,7 +59,9 @@ const Court_detail = ({ navigation, route }) => {
                         <View><Text> 20:00 : <Text>  {courtTime.Time20 ==='' ? "No data" : courtTime.Time20}  </Text></Text></View>
                     </View>
                     <Text>no update? <Text onPress={()=>getData()}>Click</Text></Text>
+                    <Button title='click to open modal to update'/>
                 </View>
+                
             }
         </View>
     )
