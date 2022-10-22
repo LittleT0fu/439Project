@@ -7,19 +7,19 @@ import { NativeScreenNavigationContainer } from 'react-native-screens'
 const DATA_Court = [
     {
         id: 'c1',
-        court: 'Court 1'
+        court: 'court 1'
     },
     {
         id: 'c2',
-        court: 'Court 2'
+        court: 'court 2'
     },
     {
         id: 'c3',
-        court: 'Court 3'
+        court: 'court 3'
     },
     {
         id: 'c4',
-        court: 'Court 4'
+        court: 'court 4'
     }
 
 ]
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 20,
         width:"100%",
+        
     },
     touch_style: {
         width: "100%",

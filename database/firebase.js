@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from 'firebase/app'
+import { getFirestore } from '@firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -9,6 +9,7 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyDnkLQZVL8XvXWqLYbqcEgaVYlpPIqm5gY",
   authDomain: "project---badmintoncourt.firebaseapp.com",
+  databaseURL: "https://project---badmintoncourt-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "project---badmintoncourt",
   storageBucket: "project---badmintoncourt.appspot.com",
   messagingSenderId: "474863258951",
@@ -16,6 +17,7 @@ const firebaseConfig = {
   measurementId: "G-3EN6CMHX6V"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export default db =  getFirestore(app)
+export const db =  getFirestore(app);
