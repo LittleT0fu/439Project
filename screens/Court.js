@@ -1,7 +1,15 @@
-import { View, Text, FlatList, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, SafeAreaView, StyleSheet ,Dimensions , ScrollView , Image } from 'react-native'
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { NativeScreenNavigationContainer } from 'react-native-screens'
+import image_slide from './image_slide'
+
+
+const { width } = Dimensions.get("window");
+const height = width * 0.6;
+const images = [
+    "https://i.ibb.co/5FmJFMr/305363762-604452284648961-1596110259081849715-n.jpg",
+    "https://i.ibb.co/5FmJFMr/305363762-604452284648961-1596110259081849715-n.jpg",
+    "https://i.ibb.co/5FmJFMr/305363762-604452284648961-1596110259081849715-n.jpg",
+];
 
 
 const DATA_Court = [
@@ -29,16 +37,16 @@ const Court = ({ navigation }) => {
 
     const ItemSeparatorView = () => {
         return (
-          // Flat List Item Separator
-          <View
-            style={{
-              height: 0.5,
-              width: "100%",
-              backgroundColor: "#C8C8C8",
-            }}
-          />
+            // Flat List Item Separator
+            <View
+                style={{
+                    height: 0.5,
+                    width: "100%",
+                    backgroundColor: "#C8C8C8",
+                }}
+            />
         );
-      };
+    };
 
 
     const _render = ({ item }) => {
@@ -59,7 +67,38 @@ const Court = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            
+            <View style={{marginTop:-40 , marginBottom:40}}>
+                <View style={{ marginTop: 50, width, height }}>
+                    <ScrollView
+                        pagingEnabled
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        style={{ width, height }}
+                    >
+                        {images.map((item, index) => (
+                            <Image
+                                key={index}
+                                source={{ uri: item }}
+                                style={{ width, height, resizeMode: "cover" }}
+                            />
+                        ))}
+                    </ScrollView>
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            position: "absolute",
+                            bottom: 0,
+                            alignSelf: "center",
+                        }}
+                    >
+                        {images.map((i, k) => (
+                            <Text key={k} style={{ color: "white", margin: 3 }}>
+                                ●
+                            </Text>
+                        ))}
+                    </View>
+                </View>
+            </View>
             <FlatList
                 data={DATA_Court}
                 keyExtractor={(item) => item.id.toString()}
@@ -77,14 +116,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 20,
-        width:"100%",
-        
+        width: "100%",
+
     },
     touch_style: {
         width: "100%",
         borderRadius: 0.5,
-        width:"100%",
-        height:"100%",
+        width: "100%",
+        height: "100%",
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -96,6 +135,6 @@ const styles = StyleSheet.create({
         height: 60,
         width: 280,
         backgroundColor: '#7BCF85',
-        borderRadius : 20 
+        borderRadius: 20
     }
 })
