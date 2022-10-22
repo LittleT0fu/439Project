@@ -1,14 +1,6 @@
 import { View, Text, FlatList, TouchableOpacity, SafeAreaView, StyleSheet ,Dimensions , ScrollView , Image } from 'react-native'
 import React from 'react'
-
-
-const { width } = Dimensions.get("window");
-const height = width * 0.6;
-const images = [
-    "https://i.ibb.co/5FmJFMr/305363762-604452284648961-1596110259081849715-n.jpg",
-    "https://i.ibb.co/5FmJFMr/305363762-604452284648961-1596110259081849715-n.jpg",
-    "https://i.ibb.co/5FmJFMr/305363762-604452284648961-1596110259081849715-n.jpg",
-];
+import Image_slider from './image_slider';
 
 
 const DATA_Court = [
@@ -66,37 +58,8 @@ const Court = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <View style={{marginTop:-40 , marginBottom:40}}>
-                <View style={{ marginTop: 50, width, height }}>
-                    <ScrollView
-                        pagingEnabled
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{ width, height }}
-                    >
-                        {images.map((item, index) => (
-                            <Image
-                                key={index}
-                                source={{ uri: item }}
-                                style={{ width, height, resizeMode: "cover" }}
-                            />
-                        ))}
-                    </ScrollView>
-                    <View
-                        style={{
-                            flexDirection: "row",
-                            position: "absolute",
-                            bottom: 0,
-                            alignSelf: "center",
-                        }}
-                    >
-                        {images.map((i, k) => (
-                            <Text key={k} style={{ color: "white", margin: 3 }}>
-                                ●
-                            </Text>
-                        ))}
-                    </View>
-                </View>
+            <View style={{ marginBottom:40}}>
+                <Image_slider/>
             </View>
             <FlatList
                 data={DATA_Court}
@@ -114,7 +77,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 20,
         width: "100%",
 
     },
