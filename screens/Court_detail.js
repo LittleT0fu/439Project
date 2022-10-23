@@ -56,6 +56,7 @@ const Court_detail = ({ navigation, route }) => {
         setStudentID('');
         setStudentName('');
         setStudentPhoneNumber('');
+        setSelectTime('')
     };
 
     const data_submit_button = () => {
