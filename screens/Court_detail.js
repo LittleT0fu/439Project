@@ -7,6 +7,11 @@ import { db } from '../database/firebase'
 import { collection, updateDoc, doc, onSnapshot, } from 'firebase/firestore'
 import { async } from '@firebase/util'
 import { TextInput } from 'react-native-gesture-handler';
+import SelectDropdown from 'react-native-select-dropdown'
+
+const Time = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"]
+
+
 
 const Court_detail = ({ navigation, route }) => {
     const { court } = route.params
@@ -18,16 +23,16 @@ const Court_detail = ({ navigation, route }) => {
     const [studentID, setStudentID] = useState('');
     const [studentName, setStudentName] = useState('');
     const [studentPhoneNumber, setStudentPhoneNumber] = useState('');
+    const [selectTime, setSelectTime] = useState('');
 
 
     useEffect(() => {
-
-        getData()
         navigation.setOptions(
             {
                 // title : "รายละเอียดสินค้า"
                 title: court,
             }, [navigation, court])
+        getData()
     }, []);
 
     const getData = async () => {
@@ -53,8 +58,52 @@ const Court_detail = ({ navigation, route }) => {
         setStudentPhoneNumber('');
     };
 
-    const data_submit_button = ()=>{
+    const data_submit_button = () => {
+        console.log(studentID, studentName, studentPhoneNumber, selectTime)
+        update_data_to_database()
+        return;
+    }
 
+    const update_data_to_database = async () => {
+        let data = {}
+        switch (selectTime) {
+            case '10:00':
+                data = { 'Time10' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '11:00':
+                data = { 'Time11' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '12:00':
+                data = { 'Time12' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '13:00':
+                data = { 'Time13' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '14:00':
+                data = { 'Time14' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '15:00':
+                data = { 'Time15' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '16:00':
+                data = { 'Time16' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '17:00':
+                data = { 'Time17' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '18:00':
+                data = { 'Time18' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '19:00':
+                data = { 'Time19' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+            case '20:00':
+                data = { 'Time20' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                break;
+        }
+        const courtRef = doc(dataRef, court)
+        const getData = updateDoc(courtRef, data)
+        return;
     }
 
     return (
@@ -79,6 +128,8 @@ const Court_detail = ({ navigation, route }) => {
                     <Text>no update? <Text onPress={() => getData()}>Click</Text></Text>
                     <Button title='click to open modal to update' onPress={toggleOverlay} />
 
+
+                    {/* overlay for data input  */}
                     <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
                         <Text>Fill the box</Text>
                         <TextInput
@@ -93,7 +144,27 @@ const Court_detail = ({ navigation, route }) => {
                             placeholder='student Phone number'
                             value={studentPhoneNumber}
                             onChangeText={(studentPhoneNumber) => (setStudentPhoneNumber(studentPhoneNumber))} />
-                        <Button title='submit' />
+
+                        <SelectDropdown
+                            data={Time}
+                            onSelect={(selectedItem, index) => {
+                                console.log(selectedItem, index)
+                                setSelectTime(selectedItem)
+                            }}
+                            buttonTextAfterSelection={(selectedItem, index) => {
+                                // text represented after item is selected
+                                // if data array is an array of objects then return selectedItem.property to render after item is selected
+                                return selectedItem
+                            }}
+                            rowTextForSelection={(item, index) => {
+                                // text represented for each item in dropdown
+                                // if data array is an array of objects then return item.property to represent item in dropdown
+                                return item
+                            }}
+                        />
+
+                        {/* submit button */}
+                        <Button title='submit' onPress={() => { data_submit_button() }} />
                     </Overlay>
 
 
@@ -123,7 +194,7 @@ const styles = StyleSheet.create({
     Table_container: {
         alignItems: 'center',
         margin: 10,
-        width: 280,
+        width: 380,
         backgroundColor: '#7BCF85',
         borderRadius: 20,
         padding: 20

@@ -1,6 +1,6 @@
 import { View, Text, FlatList, TouchableOpacity, SafeAreaView, StyleSheet ,Dimensions , ScrollView , Image } from 'react-native'
 import React from 'react'
-import Image_slider from './image_slider';
+import Image_slider from '../component/image_slider';
 
 
 const DATA_Court = [
