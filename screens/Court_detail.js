@@ -60,96 +60,103 @@ const Court_detail = ({ navigation, route }) => {
 
     const data_submit_button = () => {
         console.log(studentID, studentName, studentPhoneNumber, selectTime)
-        if(!studentID.trim()){
+        //check Student id input
+        if (!studentID.trim()) {
             alert('please fill the ID')
             return;
         }
-        if(!studentName.trim()){
+        //check student name input
+        if (!studentName.trim()) {
             alert('please fill the name')
             return;
         }
-        if(!studentPhoneNumber.trim()){
+        //check phone number input
+        if (!studentPhoneNumber.trim()) {
             alert('please fill the phone number')
             return;
         }
-        if(!selectTime.trim()){
+        //check select time input
+        if (!selectTime.trim()) {
             alert('please select time')
             return;
         }
+        //check data in time that already exist
         switch (selectTime) {
             case '10:00':
-                if(courtTime.Time10 != ''){
+                if (courtTime.Time10 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '11:00':
-                if(courtTime.Time11 != ''){
+                if (courtTime.Time11 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '12:00':
-                if(courtTime.Time12 != ''){
+                if (courtTime.Time12 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '13:00':
-                if(courtTime.Time13 != ''){
+                if (courtTime.Time13 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '14:00':
-                if(courtTime.Time14 != ''){
+                if (courtTime.Time14 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '15:00':
-                if(courtTime.Time15 != ''){
+                if (courtTime.Time15 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '16:00':
-                if(courtTime.Time16 != ''){
+                if (courtTime.Time16 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '17:00':
-                if(courtTime.Time17 != ''){
+                if (courtTime.Time17 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '18:00':
-                if(courtTime.Time18 != ''){
+                if (courtTime.Time18 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '19:00':
-                if(courtTime.Time19 != ''){
+                if (courtTime.Time19 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
             case '20:00':
-                if(courtTime.Time20 != ''){
+                if (courtTime.Time20 != '') {
                     alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
                     return;
                 }
                 break;
         }
+        //use create function
         update_data_to_database()
         return;
     }
 
     const update_data_to_database = async () => {
         let data = {}
+        //data convert
         switch (selectTime) {
             case '10:00':
                 data = { 'Time10': studentID + " - " + studentName + " - " + studentPhoneNumber }
@@ -196,7 +203,7 @@ const Court_detail = ({ navigation, route }) => {
         <View style={styles.container}>
             {loading ? <ActivityIndicator color="#f4511e" size="large" /> :
                 <View style={styles.container}>
-
+                    {/* table */}
                     <Text style={{ color: 'red', fontSize: 18 }}>!คำเตือนการจอง 1 ช่องนั้นเท่ากับการจอง 1 ชั่วโมง</Text>
                     <View style={styles.Table_container}>
                         <View><Text style={styles.text_Time}> 10:00 : <Text style={styles.text_Data}>  {courtTime.Time10 === '' ? "No data" : courtTime.Time10}  </Text></Text></View>
@@ -211,8 +218,10 @@ const Court_detail = ({ navigation, route }) => {
                         <View><Text style={styles.text_Time}> 19:00 : <Text style={styles.text_Data}>  {courtTime.Time19 === '' ? "No data" : courtTime.Time19}  </Text></Text></View>
                         <View><Text style={styles.text_Time}> 20:00 : <Text style={styles.text_Data}>  {courtTime.Time20 === '' ? "No data" : courtTime.Time20}  </Text></Text></View>
                     </View>
-                    <Text>no update? <Text style={{color:'red' , textDecorationLine: "underline"}} onPress={() => getData()}>Click</Text></Text>
-                    <View style={{marginTop:10}}>
+
+                    <Text>no update? <Text style={{ color: 'red', textDecorationLine: "underline" }} onPress={() => getData()}>Click</Text></Text>
+                    {/* open overlay */}
+                    <View style={{ marginTop: 10 }}>
                         <Button title='กดเพื่อจอง' onPress={toggleOverlay} />
                     </View>
 
@@ -222,35 +231,30 @@ const Court_detail = ({ navigation, route }) => {
                     <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
                         <Text>Fill the box</Text>
                         <TextInput
+                            style={styles.text_input}
                             placeholder='student id'
                             value={studentID}
                             onChangeText={(studentID) => (setStudentID(studentID))} />
                         <TextInput
+                            style={styles.text_input}
                             placeholder='student first name'
                             value={studentName}
                             onChangeText={(studentName) => (setStudentName(studentName))} />
                         <TextInput
+                            style={styles.text_input}
                             placeholder='student Phone number'
                             value={studentPhoneNumber}
                             onChangeText={(studentPhoneNumber) => (setStudentPhoneNumber(studentPhoneNumber))} />
 
-                        <SelectDropdown
-                            data={Time}
-                            onSelect={(selectedItem, index) => {
-                                console.log(selectedItem, index)
-                                setSelectTime(selectedItem)
-                            }}
-                            buttonTextAfterSelection={(selectedItem, index) => {
-                                // text represented after item is selected
-                                // if data array is an array of objects then return selectedItem.property to render after item is selected
-                                return selectedItem
-                            }}
-                            rowTextForSelection={(item, index) => {
-                                // text represented for each item in dropdown
-                                // if data array is an array of objects then return item.property to represent item in dropdown
-                                return item
-                            }}
-                        />
+                        <View style={{alignItems:'center' , marginTop:10  }}>
+                            <SelectDropdown
+                                data={Time}
+                                onSelect={(selectedItem, index) => {
+                                    console.log(selectedItem, index)
+                                    setSelectTime(selectedItem)
+                                }}
+                            />
+                        </View>
 
                         {/* submit button */}
                         <View style={{ marginTop: 10 }}>
@@ -287,10 +291,19 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 8
     },
-    text_Time:{
-        fontSize:16
+    text_Time: {
+        fontSize: 16
     },
-    text_Data:{
-        fontSize:14
+    text_Data: {
+        fontSize: 14
+    },
+    text_input: {
+        width: 250,
+        height: 40,
+        padding: 10,
+        marginTop: 10,
+        borderWidth: 0.5,
+        borderRadius: 5,
+        backgroundColor: "white"
     }
 })
