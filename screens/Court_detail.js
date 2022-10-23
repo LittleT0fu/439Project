@@ -60,6 +60,90 @@ const Court_detail = ({ navigation, route }) => {
 
     const data_submit_button = () => {
         console.log(studentID, studentName, studentPhoneNumber, selectTime)
+        if(!studentID.trim()){
+            alert('please fill the ID')
+            return;
+        }
+        if(!studentName.trim()){
+            alert('please fill the name')
+            return;
+        }
+        if(!studentPhoneNumber.trim()){
+            alert('please fill the phone number')
+            return;
+        }
+        if(!selectTime.trim()){
+            alert('please select time')
+            return;
+        }
+        switch (selectTime) {
+            case '10:00':
+                if(courtTime.Time10 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '11:00':
+                if(courtTime.Time11 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '12:00':
+                if(courtTime.Time12 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '13:00':
+                if(courtTime.Time13 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '14:00':
+                if(courtTime.Time14 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '15:00':
+                if(courtTime.Time15 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '16:00':
+                if(courtTime.Time16 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '17:00':
+                if(courtTime.Time17 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '18:00':
+                if(courtTime.Time18 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '19:00':
+                if(courtTime.Time19 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+            case '20:00':
+                if(courtTime.Time20 != ''){
+                    alert('มีการจองในช่วงเวลานี้อยู่แล้ว')
+                    return;
+                }
+                break;
+        }
         update_data_to_database()
         return;
     }
@@ -68,41 +152,43 @@ const Court_detail = ({ navigation, route }) => {
         let data = {}
         switch (selectTime) {
             case '10:00':
-                data = { 'Time10' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time10': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '11:00':
-                data = { 'Time11' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time11': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '12:00':
-                data = { 'Time12' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time12': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '13:00':
-                data = { 'Time13' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time13': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '14:00':
-                data = { 'Time14' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time14': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '15:00':
-                data = { 'Time15' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time15': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '16:00':
-                data = { 'Time16' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time16': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '17:00':
-                data = { 'Time17' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time17': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '18:00':
-                data = { 'Time18' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time18': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '19:00':
-                data = { 'Time19' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time19': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
             case '20:00':
-                data = { 'Time20' : studentID + " - " + studentName + " - " + studentPhoneNumber }
+                data = { 'Time20': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
         }
         const courtRef = doc(dataRef, court)
         const getData = updateDoc(courtRef, data)
+        alert('จองสำเร็จ')
+        toggleOverlay()
         return;
     }
 
@@ -113,20 +199,23 @@ const Court_detail = ({ navigation, route }) => {
 
                     <Text style={{ color: 'red', fontSize: 18 }}>!คำเตือนการจอง 1 ช่องนั้นเท่ากับการจอง 1 ชั่วโมง</Text>
                     <View style={styles.Table_container}>
-                        <View><Text> 10:00 : <Text>  {courtTime.Time10 === '' ? "No data" : courtTime.Time10}  </Text></Text></View>
-                        <View><Text> 11:00 : <Text>  {courtTime.Time11 === '' ? "No data" : courtTime.Time11}  </Text></Text></View>
-                        <View><Text> 12:00 : <Text>  {courtTime.Time12 === '' ? "No data" : courtTime.Time12}  </Text></Text></View>
-                        <View><Text> 13:00 : <Text>  {courtTime.Time13 === '' ? "No data" : courtTime.Time13}  </Text></Text></View>
-                        <View><Text> 14:00 : <Text>  {courtTime.Time14 === '' ? "No data" : courtTime.Time14}  </Text></Text></View>
-                        <View><Text> 15:00 : <Text>  {courtTime.Time15 === '' ? "No data" : courtTime.Time15}  </Text></Text></View>
-                        <View><Text> 16:00 : <Text>  {courtTime.Time16 === '' ? "No data" : courtTime.Time16}  </Text></Text></View>
-                        <View><Text> 17:00 : <Text>  {courtTime.Time17 === '' ? "No data" : courtTime.Time17}  </Text></Text></View>
-                        <View><Text> 18:00 : <Text>  {courtTime.Time18 === '' ? "No data" : courtTime.Time18}  </Text></Text></View>
-                        <View><Text> 19:00 : <Text>  {courtTime.Time19 === '' ? "No data" : courtTime.Time19}  </Text></Text></View>
-                        <View><Text> 20:00 : <Text>  {courtTime.Time20 === '' ? "No data" : courtTime.Time20}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 10:00 : <Text style={styles.text_Data}>  {courtTime.Time10 === '' ? "No data" : courtTime.Time10}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 11:00 : <Text style={styles.text_Data}>  {courtTime.Time11 === '' ? "No data" : courtTime.Time11}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 12:00 : <Text style={styles.text_Data}>  {courtTime.Time12 === '' ? "No data" : courtTime.Time12}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 13:00 : <Text style={styles.text_Data}>  {courtTime.Time13 === '' ? "No data" : courtTime.Time13}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 14:00 : <Text style={styles.text_Data}>  {courtTime.Time14 === '' ? "No data" : courtTime.Time14}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 15:00 : <Text style={styles.text_Data}>  {courtTime.Time15 === '' ? "No data" : courtTime.Time15}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 16:00 : <Text style={styles.text_Data}>  {courtTime.Time16 === '' ? "No data" : courtTime.Time16}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 17:00 : <Text style={styles.text_Data}>  {courtTime.Time17 === '' ? "No data" : courtTime.Time17}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 18:00 : <Text style={styles.text_Data}>  {courtTime.Time18 === '' ? "No data" : courtTime.Time18}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 19:00 : <Text style={styles.text_Data}>  {courtTime.Time19 === '' ? "No data" : courtTime.Time19}  </Text></Text></View>
+                        <View><Text style={styles.text_Time}> 20:00 : <Text style={styles.text_Data}>  {courtTime.Time20 === '' ? "No data" : courtTime.Time20}  </Text></Text></View>
                     </View>
-                    <Text>no update? <Text onPress={() => getData()}>Click</Text></Text>
-                    <Button title='click to open modal to update' onPress={toggleOverlay} />
+                    <Text>no update? <Text style={{color:'red' , textDecorationLine: "underline"}} onPress={() => getData()}>Click</Text></Text>
+                    <View style={{marginTop:10}}>
+                        <Button title='กดเพื่อจอง' onPress={toggleOverlay} />
+                    </View>
+
 
 
                     {/* overlay for data input  */}
@@ -137,7 +226,7 @@ const Court_detail = ({ navigation, route }) => {
                             value={studentID}
                             onChangeText={(studentID) => (setStudentID(studentID))} />
                         <TextInput
-                            placeholder='student name'
+                            placeholder='student first name'
                             value={studentName}
                             onChangeText={(studentName) => (setStudentName(studentName))} />
                         <TextInput
@@ -164,10 +253,10 @@ const Court_detail = ({ navigation, route }) => {
                         />
 
                         {/* submit button */}
-                        <Button title='submit' onPress={() => { data_submit_button() }} />
+                        <View style={{ marginTop: 10 }}>
+                            <Button title='submit' onPress={() => { data_submit_button() }} />
+                        </View>
                     </Overlay>
-
-
                 </View>
             }
         </View>
@@ -192,11 +281,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     Table_container: {
-        alignItems: 'center',
         margin: 10,
         width: 380,
         backgroundColor: '#7BCF85',
         borderRadius: 20,
-        padding: 20
+        padding: 8
+    },
+    text_Time:{
+        fontSize:16
+    },
+    text_Data:{
+        fontSize:14
     }
 })
