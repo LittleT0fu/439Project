@@ -72,7 +72,12 @@ const Court_detail = ({ navigation, route }) => {
             return;
         }
         //check phone number input
+        
         if (!studentPhoneNumber.trim()) {
+            alert('please fill the phone number')
+            return;
+        }
+        if (studentPhoneNumber.length != 10) {
             alert('please fill the phone number')
             return;
         }
