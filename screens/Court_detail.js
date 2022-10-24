@@ -193,11 +193,17 @@ const Court_detail = ({ navigation, route }) => {
                 data = { 'Time20': studentID + " - " + studentName + " - " + studentPhoneNumber }
                 break;
         }
-        const courtRef = doc(dataRef, court)
-        const getData = updateDoc(courtRef, data)
-        alert('จองสำเร็จ')
-        toggleOverlay()
-        return;
+        try {
+            const courtRef = doc(dataRef, court)
+            const getData = updateDoc(courtRef, data)
+            alert('จองสำเร็จ')
+            toggleOverlay()
+            return;
+        } catch (error) {
+            alert('จองไม่สำเร็จมีบางอย่างิดปกตติ ' + error)
+            toggleOverlay()
+        }
+       
     }
 
     return (
