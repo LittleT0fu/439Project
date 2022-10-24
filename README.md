@@ -47,7 +47,7 @@ We use React to build this Application
 <!-- About Team -->
 ## About Team
 
-Group No.4
+<strong>Group No. 4</strong>
 
 2013110131 นายชลสิทธิ์มณีกอบกุลวงศ์
 
