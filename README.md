@@ -17,7 +17,8 @@
 
 แอพพลิเคชั่นนี้เป็นแอพพลิเคชั่นี่สร้างขึ้นเพื่อใช้จองสนามแบดของมหาวิทยาลัย
 
-<a href href="https://github.com/LittleT0fu/ReactNativeFinalProject/blob/main/Documents/TNI%20Booking%20Badminton%20Court%20Manual.pdf" ><strong>Manual »</strong> </a>
+<a href="https://github.com/LittleT0fu/ReactNativeFinalProject/blob/main/Documents/TNI%20Booking%20Badminton%20Court%20Manual.pdf" ><strong>Manual »</strong> </a>
+
 <div align="center">
   <a href="https://github.com/LittleT0fu/ReactNativeFinalProject">
     <img src="Documents/image/start_screen.png" alt="Logo" width="320" height="688">
