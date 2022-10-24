@@ -21,7 +21,7 @@
 
 <a href="https://github.com/LittleT0fu/ReactNativeFinalProject/blob/main/Documents/TNI%20Booking%20Badminton%20Court%20Manual.pdf" ><strong>Manual »</strong> </a>
 
-<a href="https://github.com/LittleT0fu/ReactNativeFinalProject/blob/main/Documents/TNI%20Booking%20Badminton%20Court%20Manual.pdf" ><strong>Demonstration »</strong> </a>
+<a href="https://www.youtube.com/watch?v=_dP0scLv5h0" ><strong>Demonstration »</strong> </a>
 
 <div align="center">
   <a href="https://github.com/LittleT0fu/ReactNativeFinalProject">
